@@ -26,11 +26,12 @@ require_once __DIR__ . '/../../functions.php';
             $initialStock = 10;
             $qtySold = 5;
             $qtyReturned = 2;
+            $orderDate = '2026-03-15';
 
             mysqli_query($this->conn, "INSERT INTO produk (productID, name, price) VALUES ($productID, 'Semen', 10000)");
             mysqli_query($this->conn, "INSERT INTO inventory (productID, stock_quantity) VALUES ($productID, $initialStock)");
             
-            mysqli_query($this->conn, "INSERT INTO penjualan (orderID, customerID, totalAmount) VALUES ('$orderID', 1, 50000)");
+            mysqli_query($this->conn, "INSERT INTO penjualan (orderID, customerID, orderDate, totalAmount) VALUES ('$orderID', 1, '$orderDate' 50000)");
             mysqli_query($this->conn, "INSERT INTO penjualan_detail (orderID, productID, qty, price) VALUES ('$orderID', $productID, $qtySold, 10000)");
 
             $inputData = [
