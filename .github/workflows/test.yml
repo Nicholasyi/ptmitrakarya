@@ -9,6 +9,8 @@ on:
 jobs:
   php-tests:
     runs-on: ubuntu-latest
+    permissions : 
+      contents : write
 
     services:
       mysql:
@@ -54,8 +56,8 @@ jobs:
 
     - name: Run Integration Tests
       run: |
-        # --- TAMBAHAN 2: Tambahkan flag coverage-html untuk laporan visual ---
-        vendor/bin/phpunit --testsuite Integration --coverage-text --coverage-html tests/coverage-html
+        # TAMBAHKAN flag --coverage-clover coverage.xml di sini
+        vendor/bin/phpunit --testsuite Integration --coverage-text --coverage-clover coverage.xml --coverage-html tests/coverage-html
       env:
         DB_HOST: 127.0.0.1
         DB_NAME: db_testing
@@ -63,8 +65,14 @@ jobs:
         DB_PASS: root
 
     - name: Upload Coverage Report
-      if: always() # Tetap upload meskipun ada test yang gagal
+      if: always() 
       uses: actions/upload-artifact@v4
       with:
         name: phpunit-coverage-report
         path: tests/coverage-html/
+
+    - name: Generate Coverage Badge
+      uses: stevenalexander/phpunit-coverage-badge@v1.1.0
+      with:
+        report: coverage.xml 
+        target: badges/coverage.svg
