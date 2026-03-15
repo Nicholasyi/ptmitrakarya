@@ -181,7 +181,7 @@ CREATE TABLE `return` (
   `orderID` bigint(20) NOT NULL,
   `productID` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `returnDate` date NOT NULL DEFAULT curdate(),
+  `returnDate` date NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `reason` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
