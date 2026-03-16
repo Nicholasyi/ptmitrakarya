@@ -4,7 +4,6 @@
 
 Aplikasi berbasis web yang dibangun dengan PHP dan MySQL untuk mengelola operasional bisnis PT Mitra Karya. Sistem ini mencakup:
 
-- **Autentikasi pengguna** dengan kontrol akses berbasis peran
 - **Manajemen penjualan** — buat pesanan, kelola detail transaksi pelanggan
 - **Manajemen pembelian** — catat pembelian dari supplier, kelola stok masuk
 - **Manajemen inventaris** — pantau stok produk secara real-time
